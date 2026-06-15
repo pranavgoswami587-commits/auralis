@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURALIS - Luxury Fragrances</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Luxury Loading Screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-container">
+      <div class="aurora-logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="2"/>
+          <path d="M 50 10 Q 70 50 50 90 Q 30 50 50 10" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="8" fill="#d4af37"/>
+        </svg>
+      </div>
+      <div class="loading-text">AURALIS</div>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+      <p class="loading-subtext">Entering Luxury</p>
+    </div>
+  </div>
+
+  <!-- Floating Particles -->
+  <div id="particleContainer" class="particle-container"></div>
+
+  <!-- Luxury Navigation -->
+  <nav class="luxury-nav">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-text">✦ AURALIS ✦</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">HOME</a></li>
+        <li><a href="#products" class="nav-link">PRODUCTS</a></li>
+        <li><a href="#cart" class="nav-link" id="cartLink">CART <span class="cart-count">0</span></a></li>
+      </ul>
+      <div class="nav-icons">
+        <button id="cartIcon" class="cart-icon-btn">
+          <i class="fas fa-shopping-bag"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">AURALIS</h1>
+        <p class="hero-subtitle">Where Luxury Meets Eternity</p>
+        <p class="hero-description">Discover our exquisite collection of premium fragrances, meticulously crafted for those with refined taste.</p>
+        <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+          EXPLORE COLLECTION
+        </button>
+      </div>
+      
+      <div class="hero-3d">
+        <canvas id="perfumeCanvas"></canvas>
+        <div class="glow-orb"></div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="luxury-divider"></div>
+      <p class="scroll-indicator">↓ SCROLL TO EXPLORE ↓</p>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="featured-section">
+    <h2 class="section-title">Featured Fragrances</h2>
+    <div class="featured-grid">
+      <div class="featured-card glass-effect">
+        <div class="featured-icon">🌹</div>
+        <h3>L'ESSENCE ROYALE</h3>
+        <p>The essence of timeless elegance</p>
+        <span class="price">$850</span>
+      </div>
+      <div class="featured-card glass-effect">
+        <div class="featured-icon">💎</div>
+        <h3>OBSIDIAN NOIR</h3>
+        <p>Dark, mysterious, unforgettable</p>
+        <span class="price">$950</span>
+      </div>
+      <div class="featured-card glass-effect">
+        <div class="featured-icon">✨</div>
+        <h3>GOLDEN AURA</h3>
+        <p>Radiant luxury in every drop</p>
+        <span class="price">$750</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products-section">
+    <h2 class="section-title">Our Collection</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="men">For Men</button>
+      <button class="filter-btn" data-filter="women">For Women</button>
+      <button class="filter-btn" data-filter="unisex">Unisex</button>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Cart Section (Modal) -->
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-content glass-effect">
+      <button class="close-btn">&times;</button>
+      <h2>Your Luxury Collection</h2>
+      <div class="cart-items" id="cartItems">
+        <p class="empty-cart">Your cart is empty</p>
+      </div>
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span id="shipping">$50</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="total">$0</span>
+        </div>
+      </div>
+      <button class="checkout-btn">PROCEED TO CHECKOUT</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="luxury-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>AURALIS</h4>
+        <p>Luxury fragrances for the discerning elite.</p>
+      </div>
+      <div class="footer-section">
+        <h4>INFORMATION</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>FOLLOW US</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AURALIS. All rights reserved. Crafted for Excellence.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
